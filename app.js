@@ -5,7 +5,6 @@ const { fileDataName, fileDataPath,
     employExpensive, employCheaper,
     largePrice, smallPrice } = require('./constants/constants')
 
-
 const readFile = () => {
     try {
         const fullPathDataFile = path.join('./', fileDataPath, fileDataName);
@@ -20,23 +19,6 @@ const getPriceOfParking = (vehicle) => {
     const size = { large: largePrice, small: smallPrice };
     return size[vehicle.size];
 };
-
-const merge = () => {
-    const vehicles = readFile();
-    const vehiclesWithPriceRaw = vehicles.map(vehicle => {
-        const { licencePlate } = vehicle;
-        const priceService = fullPrice(vehicle);
-        return {
-            licencePlate,
-            employee: '',
-            ...priceService,
-        }
-    });
-    vehiclesWithPriceRaw.sort(sortVehiclesByPrice);
-    splitToEmpoys(vehiclesWithPriceRaw);
-    console.log(vehiclesWithPriceRaw)
-
-}
 
 const getFuelPercentage = (capacity, level) => {
     const percentage = (level * 100) / capacity;
@@ -71,9 +53,23 @@ const sortVehiclesByPrice = (a, b) => {
 const splitToEmpoys = (vehicles) => {
     const vehiclesLength = vehicles.length
     const upPositionToSplit = Math.floor(vehiclesLength / 2);
+    const vehiclesWithEmployee = [];
     for (let i = 0; i < vehiclesLength; i++) {
-        vehicles[i].employee = (i < upPositionToSplit) ? employExpensive : employCheaper;
+        const employee = (i < upPositionToSplit) ? employExpensive : employCheaper;
+        const { licencePlate, fuelAdded, price } = vehicles[i]
+        vehiclesWithEmployee.push({ licencePlate, employee, fuelAdded, price });
     }
+    return vehiclesWithEmployee;
 }
 
-merge();
+
+module.exports = {
+    readFile,
+    getPriceOfParking,
+    getFuelPercentage,
+    getFuelToCompete,
+    getFuelToCompetePrice,
+    fullPrice,
+    sortVehiclesByPrice,
+    splitToEmpoys,
+}
