@@ -26,11 +26,13 @@ const merge = () => {
         return {
             licencePlate,
             ...priceService,
-            employee:''
+            employee: ''
         }
     });
     vehiclesWithPriceRaw.sort(sortVehiclesByPrice);
     splitToEmpoys(vehiclesWithPriceRaw);
+    console.log(vehiclesWithPriceRaw)
+
 }
 
 const getFuelPercentage = (capacity, level) => {
@@ -64,15 +66,11 @@ const sortVehiclesByPrice = (a, b) => {
 }
 
 const splitToEmpoys = (vehicles) => {
-
     const vehiclesLength = vehicles.length
-    console.log("Div",vehiclesLength / 2)
     const upPositionToSplit = Math.floor(vehiclesLength / 2);
-    console.log(upPositionToSplit)
-    for(let i = 0; i < vehiclesLength; i++){
-        vehicles[i].employee = (i < upPositionToSplit)?'B':'A';
+    for (let i = 0; i < vehiclesLength; i++) {
+        vehicles[i].employee = (i < upPositionToSplit) ? 'B' : 'A';
     }
-    console.log(vehicles);
 }
 
 merge();
