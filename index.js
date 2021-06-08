@@ -1,3 +1,4 @@
+const yargs = require('yargs');
 const app = require('./app');
 
 const merge = () => {
@@ -16,4 +17,12 @@ const merge = () => {
 
 }
 
-merge()
+yargs.command({
+    command: 'running',
+    describe: 'run the cli application',
+    handler() {
+        merge()
+    }
+})
+
+yargs.parse();
