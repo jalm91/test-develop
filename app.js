@@ -25,8 +25,8 @@ const merge = () => {
         const priceService = fullPrice(vehicle);
         return {
             licencePlate,
+            employee: '',
             ...priceService,
-            employee: ''
         }
     });
     vehiclesWithPriceRaw.sort(sortVehiclesByPrice);
@@ -56,9 +56,9 @@ const fullPrice = (vehicle) => {
         fuelAdded = getFuelToCompete(capacity, level);
         const fuelToCompetePrice = getFuelToCompetePrice(fuelAdded);
         const price = fuelToCompetePrice + priceOfParking;
-        return { price, fuelAdded };
+        return { fuelAdded, price };
     }
-    return { price: priceOfParking, fuelAdded };
+    return { fuelAdded, price: priceOfParking };
 }
 
 const sortVehiclesByPrice = (a, b) => {
