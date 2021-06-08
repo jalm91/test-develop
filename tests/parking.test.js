@@ -89,6 +89,48 @@ test('Sould be split To Employs equal', () => {
     ]
     expect(splitToEmpoys(vehiclesWithoutEmployee)).toStrictEqual(vehiclesWithEmployee);
 })
+
+test('Sould be split To Minimal Cost', () => {
+    const vehiclesWithoutEmployee = [
+        {
+            licencePlate: 'A',
+            fuelAdded: 10,
+            price: 42.5
+        }, {
+            licencePlate: 'B',
+            fuelAdded: 20,
+            price: 70
+        },
+        {
+            licencePlate: 'C',
+            fuelAdded: 15,
+            price: 51.25
+        }
+    ]
+    const vehiclesWithEmployee = [
+        {
+            employee:'B',
+            licencePlate: 'A',
+            fuelAdded: 10,
+            price: 42.5
+        },
+        {
+            employee:'A',
+            licencePlate: 'C',
+            fuelAdded: 15,
+            price: 51.25
+        },
+        {
+            employee:'A',
+            licencePlate: 'B',
+            fuelAdded: 20,
+            price: 70
+        },
+    ]
+    vehiclesWithoutEmployee.sort(sortVehiclesByPrice)
+    expect(splitToEmpoys(vehiclesWithoutEmployee)).toStrictEqual(vehiclesWithEmployee);
+})
+
 test('fullPrice to large size with less than 10 percentaje of level', () => {
     const vehicle = {
         licencePlate: "A",
