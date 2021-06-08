@@ -21,23 +21,6 @@ const getPriceOfParking = (vehicle) => {
     return size[vehicle.size];
 };
 
-const merge = () => {
-    const vehicles = readFile();
-    const vehiclesWithPriceRaw = vehicles.map(vehicle => {
-        const { licencePlate } = vehicle;
-        const priceService = fullPrice(vehicle);
-        return {
-            licencePlate,
-            employee: '',
-            ...priceService,
-        }
-    });
-    vehiclesWithPriceRaw.sort(sortVehiclesByPrice);
-    splitToEmpoys(vehiclesWithPriceRaw);
-    console.log(vehiclesWithPriceRaw)
-
-}
-
 const getFuelPercentage = (capacity, level) => {
     const percentage = (level * 100) / capacity;
     return percentage;
@@ -76,4 +59,14 @@ const splitToEmpoys = (vehicles) => {
     }
 }
 
-merge();
+
+module.exports = {
+    readFile,   
+    getPriceOfParking,
+    getFuelPercentage,
+    getFuelToCompete,
+    getFuelToCompetePrice,
+    fullPrice,
+    sortVehiclesByPrice,
+    splitToEmpoys,
+}
