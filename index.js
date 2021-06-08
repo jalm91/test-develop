@@ -12,7 +12,7 @@ const merge = () => {
     });
     vehiclesWithPriceRaw.sort(app.sortVehiclesByPrice);
     const vehiclesWithEmployee = app.splitToEmpoys(vehiclesWithPriceRaw);
-    //console.log(vehiclesWithPriceRaw)
+    console.log(vehiclesWithEmployee)
 
 }
 
