@@ -2,7 +2,8 @@ const fs = require('fs')
 const path = require('path');
 const { fileDataName, fileDataPath,
     defaultMinimumPercentCapacity, fuelFixedRate,
-    employExpensive, employCheaper } = require('./constants/constants')
+    employExpensive, employCheaper,
+    largePrice, smallPrice } = require('./constants/constants')
 
 
 const readFile = () => {
@@ -16,7 +17,7 @@ const readFile = () => {
     }
 };
 const getPriceOfParking = (vehicle) => {
-    const size = { large: 35, small: 25 };
+    const size = { large: largePrice, small: smallPrice };
     return size[vehicle.size];
 };
 
