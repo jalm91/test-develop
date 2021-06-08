@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path');
-const { fileDataName, fileDataPath, defaultMinimumPercentCapacity, fuelFixedRate } = require('./constants/constants')
+const { fileDataName, fileDataPath,
+    defaultMinimumPercentCapacity, fuelFixedRate,
+    employExpensive, employCheaper } = require('./constants/constants')
 
 
 const readFile = () => {
@@ -69,7 +71,7 @@ const splitToEmpoys = (vehicles) => {
     const vehiclesLength = vehicles.length
     const upPositionToSplit = Math.floor(vehiclesLength / 2);
     for (let i = 0; i < vehiclesLength; i++) {
-        vehicles[i].employee = (i < upPositionToSplit) ? 'B' : 'A';
+        vehicles[i].employee = (i < upPositionToSplit) ? employExpensive : employCheaper;
     }
 }
 
