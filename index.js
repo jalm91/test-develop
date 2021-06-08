@@ -18,7 +18,7 @@ const merge = () => {
 }
 
 yargs.command({
-    command: 'running',
+    command: 'parking',
     describe: 'run the cli application',
     handler() {
         merge()
