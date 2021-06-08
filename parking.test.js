@@ -9,7 +9,7 @@ const { getFuelPercentage, getFuelToCompete,
     getPriceOfParking, getFuelToCompetePrice,
     sortVehiclesByPrice, splitToEmpoys,
     readFile, fullPrice,
-} = require('./app');
+} = require('./parking');
 
 
 test('getPriceOfParking price of parking small vehicles sould be 25', () => {
