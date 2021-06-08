@@ -1,5 +1,5 @@
 const yargs = require('yargs');
-const app = require('./parking');
+const app = require('./lib/parking');
 
 const merge = () => {
     const vehicles = app.readFile();

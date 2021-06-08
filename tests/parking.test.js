@@ -3,13 +3,13 @@ jest.mock('fs');
 const { fileDataName, fileDataPath,
     defaultMinimumPercentCapacity, fuelFixedRate,
     employExpensive, employCheaper,
-    largePrice, smallPrice } = require('./constants/constants')
+    largePrice, smallPrice } = require('../constants/constants')
 
 const { getFuelPercentage, getFuelToCompete,
     getPriceOfParking, getFuelToCompetePrice,
     sortVehiclesByPrice, splitToEmpoys,
     readFile, fullPrice,
-} = require('./parking');
+} = require('../lib/parking');
 
 
 test('getPriceOfParking price of parking small vehicles sould be 25', () => {
