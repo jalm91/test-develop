@@ -12,4 +12,12 @@ To consider
 ## Execution
 The execution of the cli requires node >= 14.X.X, and it is run as shown next:
 
-```$ node index.js parking ```
+```$ node index.js parking```
+
+## Unite test
+If you want to execute unit test, please run the command below:
+```$ node run test```
+
+## Coverage
+If you want to execute see the coverage, please run the command below:
+```$ node run coverage```
