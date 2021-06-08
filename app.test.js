@@ -149,7 +149,7 @@ test('fullPrice to small size with more than 10 percentaje of level', () => {
     expect(fullPrice(vehicle)).toStrictEqual(expectedPrice);
 })
 
-test('readFile', () => {
+test('should be return a readFile', () => {
 
     const vehicles = [
         {
@@ -172,4 +172,29 @@ test('readFile', () => {
     const vehiclesBuffer = Buffer.from(vehiclesToString)
     fs.readFileSync.mockImplementation(() => vehiclesBuffer)
     expect(readFile()).toEqual(vehicles);
+})
+
+test('should be control an error inside readFile function', () => {
+
+    const vehicles = [
+        {
+            "licencePlate": "A",
+            "size": "large",
+            "fuel": {
+                "capacity": 57,
+                "level": 0.07
+            }
+        },
+        {
+            "licencePlate": "B",
+            "size": "large",
+            "fuel": {
+                "capacity": 66,
+                "level": 0.59
+            }
+        }];
+    const vehiclesToString = JSON.stringify(vehicles);
+    const errMock = new Error('Controled error');
+    fs.readFileSync.mockImplementation(() => errMock)
+    expect(readFile()).toEqual([]);
 })
