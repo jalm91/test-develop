@@ -26,9 +26,9 @@ test('getFuelPercentage 100 capacity and 10 level should be 10 percent', () => {
     expect(getFuelPercentage(100, 10)).toBe(10);
 })
 
-test.only('getFuelPercentage when 0 capacity', () => {
+test('getFuelPercentage when 0 capacity', () => {
     const error = new Error('Invalida Capacity')
-    const functionWithError = () =>{
+    const functionWithError = () => {
         getFuelPercentage(0, 10)
     }
     expect(functionWithError).toThrowError('Invalida Capacity');
@@ -36,6 +36,14 @@ test.only('getFuelPercentage when 0 capacity', () => {
 
 test('getFuelToCompete 65 fuel and 10 level should be 55 ', () => {
     expect(getFuelToCompete(65, 10)).toBe(55);
+})
+
+test('getFuelToCompete when is less than 0 should be 0 ', () => {
+    expect(getFuelToCompete(65, 100)).toBe(0);
+})
+
+test('getFuelToCompete when the capacity is equal to level ', () => {
+    expect(getFuelToCompete(10, 10)).toBe(0);
 })
 
 test('getFuelToCompetePrice to 10 fuel should be 17.5', () => {
@@ -246,5 +254,8 @@ test('should be control an error inside readFile function', () => {
     const vehiclesToString = JSON.stringify(vehicles);
     const errMock = new Error('Controled error');
     fs.readFileSync.mockImplementation(() => errMock)
-    expect(readFile()).toEqual([]);
+    const funcWithErr = () => {
+        readFile()
+    }
+    expect(funcWithErr).toThrowError();
 })
