@@ -26,6 +26,14 @@ test('getFuelPercentage 100 capacity and 10 level should be 10 percent', () => {
     expect(getFuelPercentage(100, 10)).toBe(10);
 })
 
+test.only('getFuelPercentage when 0 capacity', () => {
+    const error = new Error('Invalida Capacity')
+    const functionWithError = () =>{
+        getFuelPercentage(0, 10)
+    }
+    expect(functionWithError).toThrowError('Invalida Capacity');
+})
+
 test('getFuelToCompete 65 fuel and 10 level should be 55 ', () => {
     expect(getFuelToCompete(65, 10)).toBe(55);
 })
@@ -109,19 +117,19 @@ test('Sould be split To Minimal Cost', () => {
     ]
     const vehiclesWithEmployee = [
         {
-            employee:'B',
+            employee: 'B',
             licencePlate: 'A',
             fuelAdded: 10,
             price: 42.5
         },
         {
-            employee:'A',
+            employee: 'A',
             licencePlate: 'C',
             fuelAdded: 15,
             price: 51.25
         },
         {
-            employee:'A',
+            employee: 'A',
             licencePlate: 'B',
             fuelAdded: 20,
             price: 70
